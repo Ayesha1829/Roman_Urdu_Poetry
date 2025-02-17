@@ -5,6 +5,49 @@ import pandas as pd
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
+# Custom CSS for UI enhancements
+st.markdown(
+    """
+    <style>
+    .title {
+        color: #FFFFFF;  /* White text */
+        font-size: 48px;
+        font-weight: bold;
+        text-align: center;
+        background-color: #8B4513;  /* Dark brown background */
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .stApp {
+        background-color: #2E2E2E;  /* Dark gray background */
+    }
+    .stTextInput>div>div>input {
+        background-color: #3E3E3E;  /* Darker gray for input */
+        color: #FFFFFF;  /* White text */
+    }
+    .stSlider>div>div>div>div {
+        background-color: #8B4513;  /* Dark brown for slider */
+    }
+    .stButton>button {
+        background-color: #8B4513;  /* Dark brown for button */
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+        padding: 10px 20px;
+        border: none;
+    }
+    .stButton>button:hover {
+        background-color: #A0522D;  /* Lighter brown on hover */
+    }
+    .stMarkdown {
+        color: #FFFFFF;  /* White text for markdown */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Load your trained model
 @st.cache_resource
 def load_model():
@@ -53,7 +96,7 @@ def generate_poetry(seed_text, next_words=50, temperature=0.8):
     return generated_text
 
 # Streamlit UI
-st.title("Poetry Generator")
+st.markdown('<h1 class="title">NeuralNazm - AI Meets Structured Poetry</h1>', unsafe_allow_html=True)
 
 # Seed text input
 seed_text = st.text_input("Enter seed text for poetry generation:")
